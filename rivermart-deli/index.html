@@ -3,7 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rivermart Deli · Edgewater, NJ</title>
+<title>Rivermart Deli | Edgewater, NJ</title>
+<link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 28'><rect x='1' y='5' width='38' height='18' rx='9' fill='%23D49A4E'/><path d='M8 3 L32 3 L33 25 L7 25 Z' fill='%23fff' stroke='%230E4D33' stroke-width='2' stroke-linejoin='round'/><path d='M12 13 l4 -2 l4 3 l4 -3 l4 2' stroke='%23C62A1F' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<meta name="theme-color" content="#0E4D33">
+<meta property="og:title" content="Rivermart Deli, Edgewater NJ">
+<meta property="og:description" content="Family-owned deli on River Road since 1993. Open every day, 6am to 9pm. Call (201) 941-6641 to order.">
+<meta property="og:type" content="restaurant">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Rivermart Deli",
+  "servesCuisine": "Deli",
+  "telephone": "+1-201-941-6641",
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "880 River Rd, Suite 5",
+    "addressLocality": "Edgewater",
+    "addressRegion": "NJ",
+    "postalCode": "07020",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "06:00",
+    "closes": "21:00"
+  }]
+}
+</script>
 <meta name="description" content="Family-owned deli on River Road in Edgewater, NJ since 1993. Breakfast sandwiches, Italian combos, chopped cheese, groceries. Open 6am every day.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +65,11 @@
   :focus-visible { outline: 3px solid var(--mustard); outline-offset: 3px; border-radius: 4px; }
 
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  ::selection { background: var(--mustard); color: var(--board); }
+  section[id] { scroll-margin-top: 16px; }
+  .wordmark { display: inline-flex; align-items: center; gap: 10px; }
+  .wordmark svg { width: 36px; height: 26px; flex: none; }
 
   /* Concept notice */
   .notice {
@@ -112,6 +146,7 @@
   }
   .open-now .dot { width: 10px; height: 10px; border-radius: 50%; background: #2E9A5B; }
   .open-now.closed .dot { background: var(--ketchup); }
+  .open-now.soon .dot { background: var(--mustard); }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
   /* Wrapped sandwich */
@@ -175,12 +210,18 @@
     display: flex; flex-wrap: wrap; gap: 12px 32px; color: var(--chalk);
   }
   .also strong { color: var(--mustard); }
+  .order-ahead {
+    margin-top: 40px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px;
+    background: #12392A; border-radius: 16px; padding: 24px 28px;
+  }
+  .order-ahead p { margin: 0; font-size: 1.2rem; font-weight: 600; text-wrap: balance; }
   .board .fine { color: #8FA597; font-size: .9rem; margin-top: 24px; }
 
   /* Reviews */
   .reviews { padding: 88px 0; }
   .reviews .sub { color: var(--muted); margin: 0 0 40px; }
-  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 56px; }
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 48px; }
   blockquote { margin: 0; }
   blockquote p {
     margin: 0 0 10px;
@@ -189,9 +230,19 @@
     font-weight: 600;
     font-variation-settings: "wdth" 88;
     max-width: 30ch;
+    text-wrap: pretty;
   }
   blockquote p::before { content: "\201C"; color: var(--ketchup); }
   blockquote p::after { content: "\201D"; color: var(--ketchup); }
+  blockquote.lead { grid-column: 1 / -1; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+  blockquote.lead p {
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    font-weight: 800;
+    font-variation-settings: "wdth" 72;
+    line-height: 1.08;
+    max-width: 24ch;
+    color: var(--green);
+  }
   blockquote cite { font-style: normal; color: var(--muted); font-size: .95rem; }
 
   /* Visit */
@@ -205,14 +256,21 @@
     margin-bottom: 28px;
   }
   .visit a.phone:hover { text-decoration: underline; }
-  .hours { border-collapse: collapse; width: 100%; max-width: 360px; }
-  .hours td { padding: 8px 0; border-bottom: 1px solid #2A6B4E; }
-  .hours td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
-  .hours tr.today td { color: var(--mustard); font-weight: 700; }
-  .visit .fine { color: #B9D2C3; font-size: .9rem; margin-top: 12px; }
-  .map {
-    width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 16px; background: #0B3D28;
+  .hours {
+    display: grid; grid-template-columns: auto 1fr; gap: 4px 24px;
+    padding: 18px 0; border-top: 1px solid #2A6B4E; border-bottom: 1px solid #2A6B4E;
+    max-width: 380px; margin: 0;
   }
+  .hours dt { font-weight: 700; }
+  .hours dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .visit .open-now { color: #CFE3D6; margin: 14px 0 0; }
+  .visit .fine { color: #B9D2C3; font-size: .9rem; margin-top: 12px; }
+  .map-wrap {
+    position: relative; width: 100%; aspect-ratio: 4 / 3;
+    border-radius: 16px; overflow: hidden; background: #0B3D28;
+    display: grid; place-items: center; text-align: center; color: #B9D2C3; padding: 24px;
+  }
+  .map { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .visit .btn-ghost { color: var(--paper); border-color: var(--paper); margin-top: 24px; }
   .visit .btn-ghost:hover { background: var(--paper); color: var(--green); }
 
@@ -251,7 +309,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="wordmark" href="#">Rivermart Deli</a>
+    <a class="wordmark" href="#"><svg viewBox="0 0 40 28" aria-hidden="true"><rect x="1" y="5" width="38" height="18" rx="9" fill="#D49A4E"/><path d="M8 3 L32 3 L33 25 L7 25 Z" fill="#fff" stroke="#0E4D33" stroke-width="2" stroke-linejoin="round"/><path d="M12 13 l4 -2 l4 3 l4 -3 l4 2" stroke="#C62A1F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Rivermart Deli</a>
     <nav class="links" aria-label="Main">
       <a href="#menu">Menu</a>
       <a href="#visit">Hours &amp; directions</a>
@@ -269,7 +327,7 @@
       <div>
         <h1><span>Rivermart</span><span>Deli</span></h1>
         <p class="lede">Edgewater's family-owned deli on River Road since 1993. Breakfast sandwiches, heroes, coffee and groceries.</p>
-        <p class="open-now" id="openNow"><span class="dot" aria-hidden="true"></span><span>Open every day, 6am to 9pm</span></p>
+        <p class="open-now" data-open-status><span class="dot" aria-hidden="true"></span><span>Open every day, 6am to 9pm</span></p>
         <div class="actions">
           <a class="btn btn-call" href="tel:+12019416641">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>
@@ -318,7 +376,7 @@
   <section class="board" id="menu">
     <div class="wrap">
       <h2>On the board</h2>
-      <p class="sub">Breakfast all day from 6am. Sandwiches on a roll, a hero or a bagel.</p>
+      <p class="sub">Breakfast from 6am, hot and cold sandwiches all day.</p>
 
       <div class="board-cols">
         <div>
@@ -374,6 +432,10 @@
       <div class="also">
         <span><strong>Also here:</strong> fresh bagels, hot coffee, cold drinks, snacks and everyday groceries.</span>
       </div>
+      <div class="order-ahead">
+        <p>Call ahead and your order will be ready when you walk in.</p>
+        <a class="btn btn-call" href="tel:+12019416641">Call (201) 941-6641</a>
+      </div>
       <p class="fine">Prices from online listings and may have changed. Call (201) 941-6641 for today's prices.</p>
     </div>
   </section>
@@ -383,7 +445,7 @@
       <h2>What regulars say</h2>
       <p class="sub">Rated 4.4 out of 5 across online reviews.</p>
       <div class="quotes">
-        <blockquote>
+        <blockquote class="lead">
           <p>The chopped cheese sandwich was amazing!!! Closest to the ones I've had in NYC yet!</p>
           <cite>DoorDash review</cite>
         </blockquote>
@@ -409,21 +471,25 @@
         <h2>Come by</h2>
         <address>880 River Rd, Suite 5<br>Edgewater, NJ 07020</address>
         <a class="phone" href="tel:+12019416641">(201) 941-6641</a>
-        <table class="hours" aria-label="Opening hours">
-          <tbody id="hoursBody"></tbody>
-        </table>
+        <dl class="hours">
+          <dt>Every day</dt><dd>6:00am – 9:00pm</dd>
+        </dl>
+        <p class="open-now" data-open-status><span class="dot" aria-hidden="true"></span><span>Open every day, 6am to 9pm</span></p>
         <p class="fine">Credit cards accepted. Delivery on DoorDash and Uber Eats.</p>
         <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=880+River+Rd+Edgewater+NJ+07020" target="_blank" rel="noopener">Get directions</a>
       </div>
-      <iframe class="map" title="Map showing Rivermart Deli at 880 River Rd, Edgewater" loading="lazy"
+      <div class="map-wrap">
+        <span>880 River Rd, Edgewater<br>Map loading…</span>
+        <iframe class="map" title="Map showing Rivermart Deli at 880 River Rd, Edgewater" loading="lazy"
         src="https://maps.google.com/maps?q=Rivermart%20Deli%2C%20880%20River%20Rd%2C%20Edgewater%2C%20NJ%2007020&amp;z=16&amp;output=embed"></iframe>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Rivermart Deli · 880 River Rd, Edgewater, NJ</span>
+    <span>Rivermart Deli, 880 River Rd, Edgewater, NJ</span>
     <span>Concept site, not the official Rivermart Deli website.</span>
   </div>
 </footer>
@@ -437,29 +503,25 @@
 </div>
 
 <script>
-  // Hours: 6am-9pm daily. Times are Edgewater local (America/New_York).
+  // Open-now status. Hours are 6am-9pm daily, Edgewater local time.
   (function () {
     var OPEN = 6, CLOSE = 21;
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
-    var today = now.getDay();
-    var body = document.getElementById("hoursBody");
-    for (var i = 1; i <= 7; i++) {
-      var d = i % 7;
-      var tr = document.createElement("tr");
-      if (d === today) tr.className = "today";
-      tr.innerHTML = "<td>" + days[d] + (d === today ? " (today)" : "") + "</td><td>6:00am – 9:00pm</td>";
-      body.appendChild(tr);
-    }
     var h = now.getHours() + now.getMinutes() / 60;
-    var el = document.getElementById("openNow");
-    var label = el.querySelector("span:last-child");
-    if (h >= OPEN && h < CLOSE) {
-      label.textContent = "Open now until 9pm";
+    var text, state = "";
+    if (h >= OPEN && h < CLOSE - 1) {
+      text = "Open now until 9pm";
+    } else if (h >= CLOSE - 1 && h < CLOSE) {
+      text = "Closing soon, open until 9pm";
+      state = "soon";
     } else {
-      el.classList.add("closed");
-      label.textContent = "Closed now. Opens at 6am";
+      text = "Closed now. Opens at 6am";
+      state = "closed";
     }
+    document.querySelectorAll("[data-open-status]").forEach(function (el) {
+      if (state) el.classList.add(state);
+      el.querySelector("span:last-child").textContent = text;
+    });
   })();
 </script>
 </body>
