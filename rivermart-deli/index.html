@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rivermart Deli · Edgewater, NJ</title>
+<meta name="description" content="Family-owned deli on River Road in Edgewater, NJ since 1993. Breakfast sandwiches, Italian combos, chopped cheese, groceries. Open 6am every day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #0E4D33;
+    --board: #0A2A1C;
+    --paper: #F6F7F2;
+    --ketchup: #C62A1F;
+    --mustard: #E8B01C;
+    --text: #0A2A1C;
+    --muted: #4C5D53;
+    --line: #D5DBD3;
+    --chalk: #EEF2EC;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    font-variation-settings: "wdth" 100;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--mustard); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Concept notice */
+  .notice {
+    background: var(--mustard);
+    color: var(--board);
+    font-size: .875rem;
+    text-align: center;
+    padding: 8px 16px;
+  }
+
+  /* Header */
+  header.top {
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding-top: 14px; padding-bottom: 14px;
+  }
+  .wordmark {
+    font-weight: 900;
+    font-variation-settings: "wdth" 70;
+    font-size: 1.5rem;
+    letter-spacing: -.01em;
+    text-decoration: none;
+    color: var(--green);
+  }
+  nav.links { display: flex; gap: 24px; align-items: center; }
+  nav.links a { text-decoration: none; font-weight: 600; }
+  nav.links a:hover { color: var(--ketchup); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.0625rem;
+    border: 2px solid var(--green);
+  }
+  .btn-call { background: var(--ketchup); border-color: var(--ketchup); color: #fff; }
+  .btn-call:hover { background: #A9221A; border-color: #A9221A; }
+  .btn-ghost { color: var(--green); }
+  .btn-ghost:hover { background: var(--green); color: var(--paper); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  nav.links .btn { padding: 10px 18px; font-size: 1rem; }
+
+  /* Hero */
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 64px; padding-bottom: 72px;
+  }
+  .hero h1 {
+    margin: 0;
+    font-weight: 900;
+    font-variation-settings: "wdth" 62;
+    font-size: clamp(4rem, 11vw, 8.5rem);
+    line-height: .86;
+    letter-spacing: -.01em;
+    color: var(--green);
+  }
+  .hero h1 span { display: block; }
+  .hero .lede {
+    font-size: 1.3rem;
+    line-height: 1.45;
+    max-width: 30ch;
+    margin: 24px 0 8px;
+  }
+  .open-now {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; color: var(--muted); margin: 0 0 28px;
+  }
+  .open-now .dot { width: 10px; height: 10px; border-radius: 50%; background: #2E9A5B; }
+  .open-now.closed .dot { background: var(--ketchup); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Wrapped sandwich */
+  .sandwich { width: 100%; max-width: 500px; justify-self: center; }
+  .sandwich svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .scrawl { font-family: "Permanent Marker", cursive; }
+  .scrawl-clip rect { transform-box: fill-box; transform-origin: left center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .scrawl-clip rect { animation: write 1.6s cubic-bezier(.6,.05,.3,1) .5s both; }
+    .scrawl-clip rect.l2 { animation-delay: 1.9s; animation-duration: .9s; }
+    @keyframes write { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  }
+  .sandwich figcaption {
+    text-align: center; color: var(--muted); font-size: .9375rem; margin-top: 8px;
+  }
+
+  /* Menu board */
+  .board {
+    background: var(--board);
+    color: var(--chalk);
+    padding: 80px 0 88px;
+  }
+  .board h2, .reviews h2, .visit h2 {
+    margin: 0 0 8px;
+    font-weight: 900;
+    font-variation-settings: "wdth" 66;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1;
+  }
+  .board .sub { color: #A9BCB0; margin: 0 0 48px; max-width: 60ch; }
+  .board-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .board h3 {
+    margin: 0 0 20px;
+    font-weight: 800;
+    font-variation-settings: "wdth" 80;
+    font-size: 1.6rem;
+    color: var(--mustard);
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1F4A36;
+  }
+  .items { list-style: none; margin: 0; padding: 0; }
+  .items li { padding: 12px 0; }
+  .item-row { display: flex; align-items: baseline; gap: 10px; }
+  .item-name {
+    font-weight: 700;
+    font-variation-settings: "wdth" 85;
+    font-size: 1.2rem;
+  }
+  .leader { flex: 1; border-bottom: 2px dotted #3D6652; transform: translateY(-5px); min-width: 20px; }
+  .price { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .item-desc { color: #A9BCB0; font-size: .975rem; margin-top: 2px; max-width: 46ch; }
+  .fav {
+    display: inline-block; margin-left: 8px;
+    font-size: .8rem; font-weight: 700;
+    background: var(--ketchup); color: #fff;
+    padding: 1px 8px; border-radius: 999px;
+    vertical-align: 3px;
+  }
+  .also {
+    margin-top: 48px; padding-top: 24px; border-top: 2px solid #1F4A36;
+    display: flex; flex-wrap: wrap; gap: 12px 32px; color: var(--chalk);
+  }
+  .also strong { color: var(--mustard); }
+  .board .fine { color: #8FA597; font-size: .9rem; margin-top: 24px; }
+
+  /* Reviews */
+  .reviews { padding: 88px 0; }
+  .reviews .sub { color: var(--muted); margin: 0 0 40px; }
+  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 56px; }
+  blockquote { margin: 0; }
+  blockquote p {
+    margin: 0 0 10px;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    font-weight: 600;
+    font-variation-settings: "wdth" 88;
+    max-width: 30ch;
+  }
+  blockquote p::before { content: "\201C"; color: var(--ketchup); }
+  blockquote p::after { content: "\201D"; color: var(--ketchup); }
+  blockquote cite { font-style: normal; color: var(--muted); font-size: .95rem; }
+
+  /* Visit */
+  .visit { background: var(--green); color: var(--paper); padding: 80px 0; }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+  .visit address { font-style: normal; font-size: 1.3rem; line-height: 1.4; margin: 16px 0 24px; }
+  .visit a.phone {
+    display: block;
+    font-weight: 900; font-variation-settings: "wdth" 70;
+    font-size: clamp(2rem, 5vw, 3rem); text-decoration: none; color: var(--mustard);
+    margin-bottom: 28px;
+  }
+  .visit a.phone:hover { text-decoration: underline; }
+  .hours { border-collapse: collapse; width: 100%; max-width: 360px; }
+  .hours td { padding: 8px 0; border-bottom: 1px solid #2A6B4E; }
+  .hours td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .hours tr.today td { color: var(--mustard); font-weight: 700; }
+  .visit .fine { color: #B9D2C3; font-size: .9rem; margin-top: 12px; }
+  .map {
+    width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 16px; background: #0B3D28;
+  }
+  .visit .btn-ghost { color: var(--paper); border-color: var(--paper); margin-top: 24px; }
+  .visit .btn-ghost:hover { background: var(--paper); color: var(--green); }
+
+  footer { padding: 32px 0 40px; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  /* Mobile call bar */
+  .callbar { display: none; }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; padding-bottom: 48px; }
+    .sandwich { max-width: 420px; order: -1; }
+    .board-cols, .quotes, .visit-grid { grid-template-columns: 1fr; }
+    .board-cols { gap: 40px; }
+    nav.links a:not(.btn) { display: none; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    nav.links { display: none; }
+    .hero .actions .btn-call { display: none; }
+    .callbar {
+      display: flex; gap: 8px;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: var(--paper); border-top: 1px solid var(--line);
+    }
+    .callbar .btn { flex: 1; justify-content: center; }
+    body { padding-bottom: 76px; }
+    blockquote p { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">Concept website made for Rivermart Deli. Prices are from public listings, so call to confirm.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="#">Rivermart Deli</a>
+    <nav class="links" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#visit">Hours &amp; directions</a>
+      <a class="btn btn-call" href="tel:+12019416641">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>
+        (201) 941-6641
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1><span>Rivermart</span><span>Deli</span></h1>
+        <p class="lede">Edgewater's family-owned deli on River Road since 1993. Breakfast sandwiches, heroes, coffee and groceries.</p>
+        <p class="open-now" id="openNow"><span class="dot" aria-hidden="true"></span><span>Open every day, 6am to 9pm</span></p>
+        <div class="actions">
+          <a class="btn btn-call" href="tel:+12019416641">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            Call to order
+          </a>
+          <a class="btn btn-ghost" href="#menu">See the menu</a>
+        </div>
+      </div>
+
+      <figure class="sandwich" style="margin:0">
+        <svg viewBox="0 40 500 300" role="img" aria-labelledby="sw-title">
+          <title id="sw-title">A sandwich wrapped in deli paper, labeled in marker: TH E&amp;C SPK on a roll</title>
+          <defs>
+            <clipPath id="c1" class="scrawl-clip"><rect x="100" y="150" width="326" height="80"/></clipPath>
+            <clipPath id="c2" class="scrawl-clip"><rect class="l2" x="180" y="234" width="170" height="50"/></clipPath>
+          </defs>
+          <!-- shadow -->
+          <ellipse cx="250" cy="318" rx="225" ry="20" fill="#0A2A1C" opacity=".13"/>
+          <!-- hero roll, ends showing -->
+          <rect x="18" y="122" width="464" height="178" rx="86" fill="#D49A4E"/>
+          <path d="M40 150 q30 -26 80 -28 M380 122 q60 4 84 34" stroke="#E9BE7C" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M30 236 q-6 -40 14 -70 M470 230 q8 -36 -8 -66" stroke="#A86F2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- paper wrap with crinkled edges -->
+          <path d="M92 104 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6 l12 6 l12 -6
+                   L420 104 L432 318 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 l-12 -6 l-12 6 L80 318 Z"
+                fill="#FFFFFF" stroke="#C9D0C6" stroke-width="2" stroke-linejoin="round"/>
+          <!-- folds -->
+          <path d="M86 150 L426 146" stroke="#E4E9E1" stroke-width="3"/>
+          <path d="M84 282 L430 278" stroke="#E4E9E1" stroke-width="3"/>
+          <path d="M140 108 L132 316 M370 106 L380 316" stroke="#EEF1EB" stroke-width="2"/>
+          <!-- tape -->
+          <rect x="388" y="82" width="40" height="84" rx="3" transform="rotate(14 408 124)" fill="#E8B01C" opacity=".9"/>
+          <!-- marker scrawl -->
+          <g clip-path="url(#c1)">
+            <text class="scrawl" x="118" y="212" font-size="47" fill="#C62A1F" transform="rotate(-3 250 200)">TH E&amp;C SPK</text>
+          </g>
+          <g clip-path="url(#c2)">
+            <text class="scrawl" x="196" y="268" font-size="30" fill="#0A2A1C" transform="rotate(-3 250 260)">on a roll</text>
+          </g>
+        </svg>
+        <figcaption>Taylor ham, egg &amp; cheese. Salt, pepper, ketchup.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="board" id="menu">
+    <div class="wrap">
+      <h2>On the board</h2>
+      <p class="sub">Breakfast all day from 6am. Sandwiches on a roll, a hero or a bagel.</p>
+
+      <div class="board-cols">
+        <div>
+          <h3>Breakfast</h3>
+          <ul class="items">
+            <li>
+              <div class="item-row"><span class="item-name">Taylor Ham, Egg &amp; Cheese<span class="fav">Regulars' pick</span></span><span class="leader"></span><span class="price">$7.99</span></div>
+              <div class="item-desc">The Jersey classic. Ask for salt, pepper, ketchup.</div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">Egg &amp; Cheese</span><span class="leader"></span><span class="price">$6.99</span></div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">Bacon, Sausage or Turkey Bacon, Egg &amp; Cheese</span><span class="leader"></span><span class="price">from $7.99</span></div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">The Heart Attack</span><span class="leader"></span><span class="price">$11.99</span></div>
+              <div class="item-desc">Taylor ham, bacon, sausage, egg, cheese and a hash brown.</div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">Cheese Omelette Platter</span><span class="leader"></span><span class="price">$10.99</span></div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">French Toast</span><span class="leader"></span><span class="price">$9.99</span></div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Sandwiches &amp; heroes</h3>
+          <ul class="items">
+            <li>
+              <div class="item-row"><span class="item-name">Italian Combo<span class="fav">Regulars' pick</span></span><span class="leader"></span><span class="price">$12.99</span></div>
+              <div class="item-desc">Ham, salami, pepperoni, provolone, lettuce and tomato.</div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">Chopped Cheese</span><span class="leader"></span><span class="price">$11.99</span></div>
+              <div class="item-desc">Chopped beef, onions and melted cheese on a hero.</div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">Philly Cheesesteak</span><span class="leader"></span><span class="price">$11.99</span></div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">Turkey Club</span><span class="leader"></span><span class="price">$11.99</span></div>
+            </li>
+            <li>
+              <div class="item-row"><span class="item-name">The Classic</span><span class="leader"></span><span class="price">$10.49</span></div>
+              <div class="item-desc">Ham, cheese, lettuce, tomato and mayo.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="also">
+        <span><strong>Also here:</strong> fresh bagels, hot coffee, cold drinks, snacks and everyday groceries.</span>
+      </div>
+      <p class="fine">Prices from online listings and may have changed. Call (201) 941-6641 for today's prices.</p>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="wrap">
+      <h2>What regulars say</h2>
+      <p class="sub">Rated 4.4 out of 5 across online reviews.</p>
+      <div class="quotes">
+        <blockquote>
+          <p>The chopped cheese sandwich was amazing!!! Closest to the ones I've had in NYC yet!</p>
+          <cite>DoorDash review</cite>
+        </blockquote>
+        <blockquote>
+          <p>Amazing breakfast sandwiches and a fantastic Italian combo that I can't get enough of.</p>
+          <cite>MenuPix review</cite>
+        </blockquote>
+        <blockquote>
+          <p>The Taylor ham is first class and the bagels are really fresh.</p>
+          <cite>Yahoo Local review</cite>
+        </blockquote>
+        <blockquote>
+          <p>Tasty and delicious food, along with great customer service.</p>
+          <cite>Restaurantji review</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap visit-grid">
+      <div>
+        <h2>Come by</h2>
+        <address>880 River Rd, Suite 5<br>Edgewater, NJ 07020</address>
+        <a class="phone" href="tel:+12019416641">(201) 941-6641</a>
+        <table class="hours" aria-label="Opening hours">
+          <tbody id="hoursBody"></tbody>
+        </table>
+        <p class="fine">Credit cards accepted. Delivery on DoorDash and Uber Eats.</p>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=880+River+Rd+Edgewater+NJ+07020" target="_blank" rel="noopener">Get directions</a>
+      </div>
+      <iframe class="map" title="Map showing Rivermart Deli at 880 River Rd, Edgewater" loading="lazy"
+        src="https://maps.google.com/maps?q=Rivermart%20Deli%2C%20880%20River%20Rd%2C%20Edgewater%2C%20NJ%2007020&amp;z=16&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Rivermart Deli · 880 River Rd, Edgewater, NJ</span>
+    <span>Concept site, not the official Rivermart Deli website.</span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-call" href="tel:+12019416641">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>
+    Call to order
+  </a>
+  <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=880+River+Rd+Edgewater+NJ+07020" target="_blank" rel="noopener">Directions</a>
+</div>
+
+<script>
+  // Hours: 6am-9pm daily. Times are Edgewater local (America/New_York).
+  (function () {
+    var OPEN = 6, CLOSE = 21;
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+    var today = now.getDay();
+    var body = document.getElementById("hoursBody");
+    for (var i = 1; i <= 7; i++) {
+      var d = i % 7;
+      var tr = document.createElement("tr");
+      if (d === today) tr.className = "today";
+      tr.innerHTML = "<td>" + days[d] + (d === today ? " (today)" : "") + "</td><td>6:00am – 9:00pm</td>";
+      body.appendChild(tr);
+    }
+    var h = now.getHours() + now.getMinutes() / 60;
+    var el = document.getElementById("openNow");
+    var label = el.querySelector("span:last-child");
+    if (h >= OPEN && h < CLOSE) {
+      label.textContent = "Open now until 9pm";
+    } else {
+      el.classList.add("closed");
+      label.textContent = "Closed now. Opens at 6am";
+    }
+  })();
+</script>
+</body>
+</html>
